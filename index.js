@@ -41,6 +41,22 @@ app.get('/api/persons', (request, response) => {
 })
 
 
+// Implement the functionality for displaying the information for a single phonebook entry. The url for getting the data for a person with the id 5 should be http://localhost:3001/api/persons/5
+//
+// If an entry for the given id is not found, the server has to respond with the appropriate status code.
+//
+
+app.get('/api/persons/:id', (request, response)=> {
+  const id = Number(request.params.id)
+  const person = persons.find(person => person.id === id)
+
+  if (person) {
+    response.json(person)
+  } else {
+    response.status(404).end()
+  }
+})
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
