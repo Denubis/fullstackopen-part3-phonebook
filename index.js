@@ -27,6 +27,15 @@ let persons = [
   ]
 
 
+app.get('/info', (request, response) => {
+  const dateString = new Date().toString()
+  // I'm really not going to bother expanding the TZ name
+  response.send(`<div>Phonebook has info for ${persons.length} people</div>
+                 <br/>
+                 <div>${dateString}</div>
+    `)
+})
+
 app.get('/api/persons', (request, response) => {
   response.json(persons)
 })
