@@ -1,0 +1,27 @@
+{
+  "name": "fullstackopen-part3-phonebook",
+  "version": "0.0.1",
+  "description": "Phonebook for fullstackopen part 3",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Denubis/fullstackopen-part3-phonebook.git"
+  },
+  "author": "Brian Ballsun-Stanton",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Denubis/fullstackopen-part3-phonebook/issues"
+  },
+  "homepage": "https://github.com/Denubis/fullstackopen-part3-phonebook#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
