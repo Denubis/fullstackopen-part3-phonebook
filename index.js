@@ -1,7 +1,9 @@
 const express = require('express')
+const { v4: uuidv4 } = require('uuid');
 const app = express()
 const PORT = 3001
 
+app.use(express.json()) //Well rememering this took me 2 bloody hours.
 
 let persons = [
     {
@@ -55,6 +57,46 @@ app.get('/api/persons/:id', (request, response)=> {
   } else {
     response.status(404).end()
   }
+})
+
+
+app.post('/api/persons', (request, response)=>{
+  //generate ID with Math.random? No. Going to use uuids instead. No point in doing this with known security issues.
+
+  const body = request.body
+
+  if (!body.name) {
+    return response.status(400).json({
+      error: 'no name',
+      content: body
+    })
+  }
+
+  if (!body.number) {
+    return response.status(400).json({
+      error: 'no number',
+      content: body
+    })
+  }
+
+  if (persons.find(person => person.name === body.name)) {
+    return response.status(400).json({
+      error: 'name already exists',
+      content: body,
+      existing: persons.find(person => person.name === body.name)
+    })
+  }
+
+  console.log(body)
+  const person = {
+    name: body.name,
+    number: body.number,
+    id: uuidv4()
+  }
+
+  persons = persons.concat(person)
+
+  response.json(person)
 })
 
 
