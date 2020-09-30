@@ -1,9 +1,13 @@
 const express = require('express')
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require('uuid')
+var morgan = require('morgan')
+
+
 const app = express()
 const PORT = 3001
 
 app.use(express.json()) //Well rememering this took me 2 bloody hours.
+app.use(morgan('tiny')) //middleware executes in order
 
 let persons = [
     {
