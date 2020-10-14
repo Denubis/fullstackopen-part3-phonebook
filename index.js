@@ -1,8 +1,14 @@
 const express = require('express')
 const { v4: uuidv4 } = require('uuid')
+const cors = require('cors')
 var morgan = require('morgan')
 
 const app = express()
+const PORT = process.env.PORT || 3001
+
+
+
+app.use(cors())
 // invoking this middlware before making morgan tokens shouldn't matter, but...
 
 
@@ -14,7 +20,6 @@ morgan.token('body', function (req, res) { return JSON.stringify(req.body) })
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body')) //middleware executes in order
 
 
-const PORT = 3001
 
 
 let persons = [
