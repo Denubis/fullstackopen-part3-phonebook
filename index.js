@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 3001
 
 app.use(cors())
 // invoking this middlware before making morgan tokens shouldn't matter, but...
+app.use(express.static('build'))
 
 
 app.use(express.json()) //Well rememering this took me 2 bloody hours.
